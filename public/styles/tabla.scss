@@ -1,0 +1,47 @@
+@use "./colores.scss";
+.tabla{
+    display:flex;
+    flex-direction: column;
+    margin: 20px auto;
+    .header-tabla{
+        font-size: larger;
+        font-weight: bold;
+    }
+}
+>div{
+    display:grid;
+    grid-template-columns: 50px 1fr 1fr 1fr;
+    border-bottom: 1px solid colores.$colortexto;
+    min-width: 600px;
+    justify-items: center;
+    align-items: center;
+    height: 50px;
+}
+
+>div:not(.header-tabla):hover{
+    background-color: rgba(0,0,0,0.1)
+}
+.acciones-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button{
+        width: 50px;
+        display:grid;
+        align-items: center;
+        img{
+            width:50px;
+            margin: auto;
+        }
+    }
+}
+.disponible{
+    background-color: colores.$colorcorrecto;
+    border-radius: 5px;
+    padding: 5px 10px
+}
+.ocupado{
+    background-color: colores.$colormal;
+    border-radius: 5px;
+    padding: 5px 10px
+}

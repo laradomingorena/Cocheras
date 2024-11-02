@@ -1,0 +1,64 @@
+@use"./../../../../public/styles/colores.scss";
+
+.fondo{
+    background-image: url("./../../../../public/imagenes/fondo3.jpg");
+    height:100vh;
+    background-size:cover;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+.titulo {
+    font-size: 50px; 
+    color: colores.$colorprincipal; 
+    margin-bottom: 20px; 
+    font-family:Arial, Helvetica, sans-serif; 
+    letter-spacing: 2px; 
+    font-weight:700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); }
+.centro {
+    background-color: colores.$colorfondo; 
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); 
+    text-align: center;
+}
+.inputlogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputlogin input {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(204, 202, 202); 
+    width: 280px;
+    font-size: 16px;
+}
+.botonIS {
+    background-color: #17161f; 
+    color: white;
+    padding: 15px 0;
+    width: 280px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    cursor: pointer;
+
+}
+
+.botonIS a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.botonIS:hover {
+    background-color: #818080;
+}

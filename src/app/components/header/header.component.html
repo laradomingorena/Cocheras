@@ -1,0 +1,16 @@
+<p>header works!</p>
+<header>
+    <h1>Parking App</h1>
+    <nav>
+        <a [routerLink]="['/estado-cocheras']"routerLinkActive= "activa">Estado de cochera</a>
+        @if(esAdmin){
+        <a [routerLink]="['/reportes']"routerLinkActive="activa" >Reportes</a>
+        <a >Precios</a>
+    }
+        <a >Usuario</a>
+    </nav>
+    <button (click)= "abrirModal()">Modal test</button>
+    <p>Resultado es: {{resultadoInput}}</p>
+
+</header>
+

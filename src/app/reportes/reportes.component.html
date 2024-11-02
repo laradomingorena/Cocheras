@@ -1,0 +1,31 @@
+
+<header>
+    <h1 class="reportes-title">REPORTES MENSUALES</h1>
+</header>
+
+<div class="tabla">
+    <div class="header-tabla">
+        <div>{{header.nro}}</div>
+        <div>{{header.mes}}</div>
+        <div>{{header.usos}}</div>
+        <div>{{header.cobrado}}</div>
+    </div>
+    
+    @for(reporte of reportes; track reporte.id) {
+        <div class="fila">
+            <div>{{reporte.id}}</div>
+            <div>{{reporte.mes}}</div>
+            <div>{{reporte.usos}}</div>
+            <div>{{formatearMoneda(reporte.cobrado)}}</div>
+        </div>
+    }
+</div>
+
+<div class="totales">
+    <div class="total-item">
+        <span>Total Usos: {{getTotalUsos()}}</span>
+    </div>
+    <div class="total-item">
+        <span>Total Cobrado: {{formatearMoneda(getTotalCobrado())}}</span>
+    </div>
+</div>

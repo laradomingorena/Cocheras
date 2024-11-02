@@ -1,0 +1,39 @@
+<header>
+    <h1 class="parking-app">PARKING APP</h1>
+    <h1 class="estado">ESTADO COCHERAS</h1>
+    <a [routerLink]="['/reportes']" class="estado">REPORTES</a>
+    <a href=""><img src="imagenes/logo.png" alt="logo" class="logo"></a>
+</header>
+<div>
+    <button (click)="agregarFila()" class="boton-resaltado">Agregar fila</button>
+
+</div>
+<div class="tabla">
+    <div id="header-tabla">
+        <div>{{header.nro}}</div>
+        <div>{{header.disponibilidad}}</div>
+        <div>{{header.ingreso}}</div>
+        <div>{{header.acciones}}</div>
+    </div>
+    @for (fila of filas; track $index) {
+        <div>
+            <div>{{ fila.id }}</div>
+            </div>
+            @if (fila.activo) {
+                <div>{{ fila.activo.patente }}</div>
+            } @else if (fila.deshabilitada) {
+                <div><span class="ocupado">No disponible</span></div>
+            } @else {
+                <div><span class="disponible">Disponible</span></div>
+            }
+            <div>{{ fila.activo?.horaIngreso }}</div>
+            <div class="acciones-container">
+            <div class="acciones-container">
+                <button (click)="cambiarDisponibilidadCochera(fila.id,$event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>
+                <button (click)="eliminarFila(fila.id, $event)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
+            </div>
+        
+</div>}
+<a [routerLink]="['/login']" >Cerrar sesion</a>
+<button (click)="getCocheras()">Get cocheras</button>
+

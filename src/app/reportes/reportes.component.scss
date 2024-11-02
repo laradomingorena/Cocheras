@@ -1,0 +1,67 @@
+@use "./../../../public/styles/colores.scss";
+@use "./../../../public/styles/tabla.scss";
+
+
+header {
+    background-color: colores.$colorfondo;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.reportes-title {
+    font-size: 40px;
+    color: colores.$colorprincipal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.volver {
+    font-size: 20px;
+    color: colores.$colorprincipal;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabla {
+    margin: 20px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #ddd;
+}
+
+.header-tabla {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
+    background-color: colores.$colorfondo;
+    font-weight: bold;
+    border-bottom: 2px solid #999;
+
+    div {
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+.fila {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
+    border-bottom: 1px solid #eee;
+
+    div {
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+.totales {
+    margin: 20px 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .total-item {
+        margin: 10px 0;
+        text-align: right;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,7 @@
+@use "./../../../../public/styles/colores.scss";
+h1{
+    font-size: xx-large;
+}
+.activa{
+    color: colores.$color-principal;
+}
