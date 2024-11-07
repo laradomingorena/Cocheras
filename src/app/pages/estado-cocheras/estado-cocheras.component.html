@@ -24,13 +24,14 @@
             } @else if (fila.deshabilitada) {
                 <div><span class="ocupado">No disponible</span></div>
             } @else {
-                <div><span class="disponible">Disponible</span></div>
+                <button (click)="abrirModalNuevoEstacionamiento(fila.id)"><span class="disponible">Disponible</span></button>
             }
             <div>{{ fila.activo?.horaIngreso }}</div>
             <div class="acciones-container">
             <div class="acciones-container">
-                <button (click)="cambiarDisponibilidadCochera(fila.id,$event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>
-                <button (click)="eliminarFila(fila.id, $event)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
+                <button (click)="cambiarDisponibilidadCochera(fila.id, $event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>
+                <button (click)="abrirModalEliminarEstacionamiento(fila.id)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
+                <button (click)="cobrarEstacionamiento (fila.id)">COBRAR</button>
             </div>
         
 </div>}

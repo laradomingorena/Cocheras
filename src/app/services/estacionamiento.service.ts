@@ -6,6 +6,9 @@ import { Estacionamiento } from '../interfaces/estacionamiento';
   providedIn: 'root'
 })
 export class EstacionamientoService {
+  cargar() {
+      throw new Error('Method not implemented.');
+  }
   auth = inject(AuthService)
 
   estacionamientos(): Promise<Estacionamiento[]> {
