@@ -82,6 +82,7 @@ traerCocheras() {
       this.traerCocheras();
     });
   }
+  
   abrirModalNuevoEstacionamiento(idCochera:number){
     console.log("abriendo modal cochera", idCochera)
      Swal.fire({
@@ -192,6 +193,7 @@ async cobrarEstacionamiento(cocheraId: number) {
     }
   }
 }
+
     
     sortCocheras(){
       this.filas.sort((a,b)=> a.id > b.id ? 1 : -1)

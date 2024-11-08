@@ -9,16 +9,16 @@
 
 </div>
 <div class="tabla">
-    <div id="header-tabla">
+    <div class="header-tabla">
         <div>{{header.nro}}</div>
         <div>{{header.disponibilidad}}</div>
         <div>{{header.ingreso}}</div>
         <div>{{header.acciones}}</div>
     </div>
     @for (fila of filas; track $index) {
-        <div>
+        
             <div>{{ fila.id }}</div>
-            </div>
+            
             @if (fila.activo) {
                 <div>{{ fila.activo.patente }}</div>
             } @else if (fila.deshabilitada) {
@@ -27,12 +27,12 @@
                 <button (click)="abrirModalNuevoEstacionamiento(fila.id)"><span class="disponible">Disponible</span></button>
             }
             <div>{{ fila.activo?.horaIngreso }}</div>
-            <div class="acciones-container">
+            
             <div class="acciones-container">
                 <button (click)="cambiarDisponibilidadCochera(fila.id, $event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>
                 <button (click)="abrirModalEliminarEstacionamiento(fila.id)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
                 <button (click)="cobrarEstacionamiento (fila.id)">COBRAR</button>
-            </div>
+            
         
 </div>}
 <a [routerLink]="['/login']" >Cerrar sesion</a>

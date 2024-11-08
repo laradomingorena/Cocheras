@@ -6,25 +6,23 @@
     <a href=""><img src="imagenes/logo.png" alt="logo" class="logo"></a>
 </header>
   
-<section id="reportes-section">
-    <app-header></app-header>
-    <main>
-        <div class="tabla">
-            <div class="header-tabla">
-                <div>Nro</div>
-                <div>Mes</div>
-                <div>Usos</div>
-                <div>Cobrado</div>
-            </div>
-            @for (reporte of reporteEstacionamientos; track reporte.nro){
-                <div>
-                    <div> {{reporte.nro}} </div>
-                    <div> {{reporte.mes}} </div>
-                    <div> {{reporte.usos}} </div>
-                    <div> {{reporte.cobrado}} </div>
-                </div>
-            }
-        </div>
-    </main>
-    <div class="page-padding"></div>
-</section>
+<app-header></app-header>
+<main>
+  <table class="tabla">
+      <thead>
+        <tr>
+          <th>Nro</th>
+          <th>Mes</th>
+          <th>Usos</th>
+          <th>Cobrado</th>
+        </tr>
+      </thead>
+      @for (reporte of reporteEstacionamientos; track reporte.nro){
+        <div>
+            <div> {{reporte.nro}} </div>
+            <div> {{reporte.mes}} </div>
+            <div> {{reporte.usos}} </div>
+            <div> {{reporte.cobrado}} </div>
+        }
+    </table> 
+  </main>

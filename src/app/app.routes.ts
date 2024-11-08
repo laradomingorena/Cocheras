@@ -4,7 +4,9 @@ import { EstadoCocherasComponent } from './pages/estado-cocheras/estado-cocheras
 import { inject } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { ReportesComponent } from './reportes/reportes.component';
+
+
+
 
 function guardaLogueado() {
     let auth = inject(AuthService);
@@ -32,9 +34,5 @@ export const routes: Routes = [
         redirectTo:"login",
         pathMatch:"full"
     },
-    {
-        path: "reportes",
-        component: ReportesComponent
-
-    }
+   
 ];
