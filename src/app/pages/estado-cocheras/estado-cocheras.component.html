@@ -17,16 +17,17 @@
     </div>
     @for (fila of filas; track $index) {
         
-            <div>{{ fila.id }}</div>
+            <div>numero: {{ fila.id }}</div>
             
             @if (fila.activo) {
-                <div>{{ fila.activo.patente }}</div>
+                <div>disponibilidad: {{ fila.activo.patente }}</div>
             } @else if (fila.deshabilitada) {
-                <div><span class="ocupado">No disponible</span></div>
+                <div>disponibilidad: <span class="ocupado">No disponible</span></div>
             } @else {
-                <button (click)="abrirModalNuevoEstacionamiento(fila.id)"><span class="disponible">Disponible</span></button>
+                disponibilidad: <button (click)="abrirModalNuevoEstacionamiento(fila.id)"><span class="disponible">Disponible</span></button>
             }
-            <div>{{ fila.activo?.horaIngreso }}</div>
+            
+            <div>horaingreso: {{ fila.activo?.horaIngreso }}</div>
             
             <div class="acciones-container">
                 <button (click)="cambiarDisponibilidadCochera(fila.id, $event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>

@@ -50,6 +50,7 @@ traerCocheras() {
     };
   });
 }
+
   agregarFila() {
     fetch('http://localhost:4000/cocheras/', {
       method: 'POST',
@@ -59,7 +60,7 @@ traerCocheras() {
       },
       body: JSON.stringify({ descripcion: "Agregada por API" })
     }).then(() => {
-      this.traerCocheras();
+      this.traerCocheras().then(()=> this.sortCocheras());
     });
   }
   eliminarFila(cocheraId: number) {
@@ -69,7 +70,7 @@ traerCocheras() {
         'Authorization': 'Bearer ' + this.auth.getToken(),
       },
     }).then(()=>{
-      this.traerCocheras();
+      this.traerCocheras().then(()=> this.sortCocheras());
     });
   }
   cambiarDisponibilidadCochera(cocheraId:number, event: Event){
@@ -79,7 +80,7 @@ traerCocheras() {
         'Authorization': 'Bearer ' + this.auth.getToken(),
       },
     }).then(()=>{
-      this.traerCocheras();
+      this.traerCocheras().then(()=> this.sortCocheras());
     });
   }
   
@@ -98,7 +99,7 @@ traerCocheras() {
     }).then(res=>{
       if(res.isConfirmed){
         console.log("Tengo que estacionar la patente", res.value);
-        this.estacionamientos.estacionarAuto(res.value, idCochera).then(() => this.traerCocheras());
+        this.estacionamientos.estacionarAuto(res.value, idCochera).then(() => this.traerCocheras()).then(()=> this.sortCocheras());
       }
     }) 
     }
@@ -193,6 +194,30 @@ async cobrarEstacionamiento(cocheraId: number) {
     }
   }
 }
+/*abrirModalCobroCochera(cocheraId:number){
+  const cochera = this.filas.find(cochera => cochera.id === cocheraId)!;
+  this.estacionamientos.cerrar(cochera.activo?.patente!).then((res) => {
+    return Swal.fire({
+      title: "Cobro cochera",
+      text: `El monto a cobrar por el tiempo estacionado en la cochera ${cocheraId} es $${res.costo}`,
+      icon: "info",
+      confirmButtonText: "Cobrar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const Toast = Swal.mixin({
+          toast: true,
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        })
+      }
+    }).then(() => this.reloadCocheras()).then(()=> this.ordenarCocheras());
+  })
+}*/
 
     
     sortCocheras(){
