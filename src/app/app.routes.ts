@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EstadoCocherasComponent } from './pages/estado-cocheras/estado-cocheras.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
+
 import { inject } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
@@ -9,30 +11,35 @@ import { Router } from '@angular/router';
 
 
 function guardaLogueado() {
-    let auth = inject(AuthService);
-    let router = inject (Router);
-    
-    if(auth.estaLogueado())
-        return true;
-    else
+  let auth = inject(AuthService);
+  let router = inject(Router);
+
+  if (auth.estaLogueado())
+    return true;
+  else
     router.navigate(['/login']);
-    return false
-     
+  return false
+
 }
 export const routes: Routes = [
-    {
-        path:"login",
-        component: LoginComponent
-    },
-    {
-        path:"estado-cocheras",
-        component: EstadoCocherasComponent,
-        canActivate: [guardaLogueado]
-    },
-    {
-        path:"",
-        redirectTo:"login",
-        pathMatch:"full"
-    },
-   
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "estado-cocheras",
+    component: EstadoCocherasComponent,
+    canActivate: [guardaLogueado]
+  },
+  {
+    path: "reportes",
+    component: ReportesComponent,
+    canActivate: [guardaLogueado]
+  },
+  {
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
+  },
+
 ];
