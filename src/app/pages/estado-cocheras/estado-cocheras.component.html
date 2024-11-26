@@ -20,7 +20,7 @@
             <div>numero: {{ fila.id }}</div>
             
             @if (fila.activo) {
-                <div>disponibilidad: {{ fila.activo.patente }}</div>
+                <div>Patente: {{ fila.activo.patente }}</div>
             } @else if (fila.deshabilitada) {
                 <div>disponibilidad: <span class="ocupado">No disponible</span></div>
             } @else {
@@ -30,12 +30,13 @@
             <div>horaingreso: {{ fila.activo?.horaIngreso }}</div>
             
             <div class="acciones-container">
-                <button (click)="cambiarDisponibilidadCochera(fila.id, $event)"><img src="imagenes/prohibido.png" alt="no disponible"></button>
-                <button (click)="abrirModalEliminarEstacionamiento(fila.id)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
-                <button (click)="cobrarEstacionamiento (fila.id)">COBRAR</button>
-            
-        
-</div>}
+              <button (click)="habilitarCochera(fila.id, $event)"><img src="imagenes/logo.png" *ngIf="fila.deshabilitada" alt="no disponible"></button>
+              <button (click)="deshabilitarCochera(fila.id, $event)"><img src="imagenes/prohibido.png" *ngIf="!fila.activo && (!fila.deshabilitada || fila.deshabilitada === null && fila.deshabilitada === undefined)" alt="disponible"></button>
+              <button (click)="abrirModalEliminarEstacionamiento(fila.id)"><img src="imagenes/tacho.png" alt="borrar fila"></button>
+              <button (click)="cobrarEstacionamiento (fila.id)">COBRAR</button>
+
+
+            </div>}
 <a [routerLink]="['/login']" >Cerrar sesion</a>
 <button (click)="getCocheras()">Get cocheras</button>
 

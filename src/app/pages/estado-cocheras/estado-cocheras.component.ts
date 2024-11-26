@@ -78,15 +78,83 @@ export class EstadoCocherasComponent {
       this.traerCocheras().then(() => this.sortCocheras());
     });
   }
-  cambiarDisponibilidadCochera(cocheraId: number, event: Event) {
-    fetch('http://localhost:4000/cocheras/' + cocheraId + '/disable', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + this.auth.getToken(),
-      },
-    }).then(() => {
-      this.traerCocheras().then(() => this.sortCocheras());
+
+  async habilitarCochera(cocheraId: number, event: Event) {
+    console.log("habilitando cochera", cocheraId)
+
+    const result = await Swal.fire({
+      title: 'Habilitar Cochera',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Habilitar',
+      cancelButtonText: 'Cancelar'
     });
+
+    if (result.isConfirmed) {
+      try {
+        await fetch('http://localhost:4000/cocheras/' + cocheraId + '/enable', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + this.auth.getToken(),
+          },
+        }).then(() => {
+          this.traerCocheras().then(() => this.sortCocheras());
+        });
+
+        await Swal.fire({
+          title: 'Éxito',
+          text: 'Cochera Habilitada correctamente',
+          icon: 'success'
+        });
+
+        await this.traerCocheras();
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo habilitar cochera',
+          icon: 'error'
+        });
+      }
+    }
+  }
+
+  async deshabilitarCochera(cocheraId: number, event: Event) {
+    console.log("deshabilitando cochera", cocheraId)
+
+    const result = await Swal.fire({
+      title: 'Deshabilitar Cochera',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Deshabilitar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await fetch('http://localhost:4000/cocheras/' + cocheraId + '/disable', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + this.auth.getToken(),
+          },
+        }).then(() => {
+          this.traerCocheras().then(() => this.sortCocheras());
+        });
+
+        await Swal.fire({
+          title: 'Éxito',
+          text: 'Cochera deshabilitada correctamente',
+          icon: 'success'
+        });
+
+        await this.traerCocheras();
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo deshabilitar cochera',
+          icon: 'error'
+        });
+      }
+    }
   }
 
   abrirModalNuevoEstacionamiento(idCochera: number) {
@@ -210,31 +278,6 @@ export class EstadoCocherasComponent {
       }
     }
   }
-  /*abrirModalCobroCochera(cocheraId:number){
-    const cochera = this.filas.find(cochera => cochera.id === cocheraId)!;
-    this.estacionamientos.cerrar(cochera.activo?.patente!).then((res) => {
-      return Swal.fire({
-        title: "Cobro cochera",
-        text: `El monto a cobrar por el tiempo estacionado en la cochera ${cocheraId} es $${res.costo}`,
-        icon: "info",
-        confirmButtonText: "Cobrar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const Toast = Swal.mixin({
-            toast: true,
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          })
-        }
-      }).then(() => this.reloadCocheras()).then(()=> this.ordenarCocheras());
-    })
-  }*/
-
 
   sortCocheras() {
     this.filas.sort((a, b) => a.id > b.id ? 1 : -1)
