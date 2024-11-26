@@ -19,6 +19,16 @@ export class EstacionamientoService {
       },
     }).then(r => r.json());
   }
+
+  traerLista(): Promise<Estacionamiento[]> {
+    return fetch("http://localhost:4000/estacionamientos", {
+      method: "GET",
+      headers: {
+        authorization: "Bearer " + (this.auth.getToken() ?? "")
+      },
+    }).then(res => res.json());
+  }
+
   buscarEstacionamientoActivo(cocheraId: number){
     return this.estacionamientos().then(estacionamientos => {
       let buscado = null;
@@ -47,4 +57,3 @@ export class EstacionamientoService {
     
   }
 }
-  

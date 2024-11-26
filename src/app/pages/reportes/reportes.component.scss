@@ -83,3 +83,66 @@ header {
         font-weight: bold;
     }
 }
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+.tabla thead tr {
+  background-color: colores.$colorfondo;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.tabla th, .tabla td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  width: auto; 
+  box-sizing: border-box; 
+}
+
+.tabla tbody tr:nth-child(even) {
+  background-color: colores.$colorfondo;
+}
+
+.tabla tbody tr:hover {
+  background-color: colores.$colorfondo;
+}
+
+.tabla th {
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.tabla td {
+  text-align: center;
+}
+
+.tabla caption {
+  caption-side: bottom;
+  padding: 10px;
+  font-size: 14px;
+  color: #777;
+  text-align: right;
+}
+
+.tabla th, .tabla td {
+  min-width: 100px; 
+}
+
+.tabla th:nth-child(1), .tabla td:nth-child(1) {
+  width: 50px; 
+}
+
+.tabla th:nth-child(4), .tabla td:nth-child(4) {
+  width: 120px; 
+}
+

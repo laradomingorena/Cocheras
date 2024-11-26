@@ -6,24 +6,23 @@
     <a href=""><img src="imagenes/logo.png" alt="logo" class="logo"></a>
 </header>
   
-<app-header></app-header>
 <main>
   <table class="tabla">
-      <thead>
-        <tr>
-          <th>Nro</th>
-          <th>Mes</th>
-          <th>Usos</th>
-          <th>Cobrado</th>
-        </tr>
-      </thead>
-      @for (reporte of reporteEstacionamientos; track reporte.nro){
-        <div>
-            <div> {{reporte.nro}} </div>
-            <div> {{reporte.mes}} </div>
-            <div> {{reporte.usos}} </div>
-            <div> {{reporte.cobrado}} </div>
-          </div>
-        }
-    </table> 
+    <thead>
+      <tr>
+        <th>Nro</th>
+        <th>Mes</th>
+        <th>Usos</th>
+        <th>Cobrado</th>
+      </tr>
+    </thead>
+    @for (linea of reporte; track linea.nro){
+    <tr>
+      <td> {{linea.nro}} </td>
+      <td> {{linea.mes}} </td>
+      <td> {{linea.usos}} </td>
+      <td> {{linea.cobradoFormatted}} </td>
+    </tr>
+    }
+  </table> 
   </main>
